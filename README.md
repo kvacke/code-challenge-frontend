@@ -35,8 +35,7 @@ or decrement it.
 Thanks to react-responsive-masonry the column count changes based on intervals of window widths.  
 For full-on mobile view I got rid of the masonry completely and opted for a more familiar instagrammy feed.  
 Landscape view works fine but got less attention than portrait. It seems to okay however since most pictures
-from Unsplash  
-are taken in portrait mode.
+from Unsplash are taken in portrait mode.
 
 ### "Surprise us!"
 
