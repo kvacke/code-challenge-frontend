@@ -41,7 +41,7 @@ from Unsplash are taken in portrait mode.
 
 To put a spin on what essentially became a clone of the Unsplash.com feed I decided to call EveryPixels  
 stock photo-quality API with every picture and overlay the returned score along with a censoring black box on  
-those which didn't make the cut. Unfortunately the EveryPixel API's free plan is limited at 100 requests per 24h so it doesn't  
+those which didn't make the cut. Unfortunately the EveryPixel API's free plan is limited at 100 requests per 24h so it doesn't
 take a lot of scrolling to deplete my quota. If the response contains an error (code 429 'Too many requests') a mock api  
 is called instead with a random number above 50 to not clutter the UI with black boxes.
 
