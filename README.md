@@ -17,11 +17,15 @@ An additional requirement was to show full-width view when an image is clicked a
 
 * App
   * InfiniteScroll *- Desktop view*
+    * Logo
+    * Blurb (brief description)    
     * MasonryItem  
         * StockScoreOverlay and img
     * ImageView (full width, conditional: on click event)
       * ImageInfoDialog (meta data, conditional: on click event)
   * InfiniteScroll *-Mobile view*
+    * Logo
+    * Blurb (brief description) 
     * ListViewItem
       * StockScoreOverlay and img
       * ImageInfoDialog
