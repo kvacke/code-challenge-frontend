@@ -41,7 +41,7 @@ I experimented with different ways of presenting the meta data of an image until
 on something similar to what is on Unsplash. In order to let the user scroll 'sideways', i.e. picture by  
 picture in the full view I let the parent component (which holds the array of photos),  
 simply hold the currently viewed image's index in their state and pass a function to the image viewer to increment  
-or decrement it.
+or decrement it, triggering the unsplash api for more pictures as the user nears the end of the photo array.
 
 ### Responsiveness
 
