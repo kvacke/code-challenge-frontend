@@ -1,0 +1,11 @@
+
+uninstall unused packages
+prettier
+testing
+
+flytta unsplash api till mappen
+
+
+Planerade förbättringar:
+kalla inte på ratingapi vid resize
+lagra id och kolla om rating finns i db, baserad på tid(ska rateas minst någon gång / tidsenhet)

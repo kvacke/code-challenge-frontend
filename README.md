@@ -1,78 +1,73 @@
-Frontend challenge
-====
+# Doro Frontend Challenge: "Stock up!"
 
-![](https://images.unsplash.com/photo-1573588028698-f4759befb09a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2690&q=80)
+## Introduction
 
-Unsplash is the internet’s premium source of freely-usable images. 
-Create a nice-looking application that allows browsing of curated images from Unsplash.
+This project was my contribution to Doro's frontend challenge.  
+The result is a React app hosted at https://doro-frontend.vercel.app
 
-# Requirements
+## The Challenge
 
-- [ ] Use the Unsplash API - docs here to set up a developer account: https://unsplash.com/documentation.
+To create a responsive, infinitely scrolling, lazy loading grid-view of images,  
+fed by the photo api made available by Unsplash.com.  
+An additional requirement was to show full-width view when an image is clicked and then offer additional image details  
+and the ability to keep scrolling.
 
-- [ ] We want to see a grid overview, use the GET /photos/photos endpoint from the Unsplash API to get a set of images.
-- [ ] The application should be responsive and work both in portrait and landscape modes, on both desktop and mobile.
-- [ ] The application should support infinite scrolling using a lazy-load to fetch new images as the user scrolls.
-- [ ] The user can click on a grid element to get a full-width representation of the image with additional meta data.
-- [ ] The user can navigate to previous or next full-width representation without having to close that view.
+## My Solution
 
-# Tech requirements
-- React
-- Tests (we like [Jest](https://jestjs.io))
-- Linter (we like [Prettier](https://prettier.io))
-- CSSinJS is a plus, but not a requirement ([JSS](https://cssinjs.org/react-jss/), [styled-components](https://www.styled-components.com))
+### Grid-view and infinite scrolling
 
+In order to spend more time figuring out the _how_ instead of the _what_ I decided early on  
+to try to imitate the neat masonry layout of the Unsplash feed.  
+Once in place thanks to react-responsive-masonry and placeholder photos I read up on how the Intersection  
+Observer API can be used to observe the viewport for any amount of a referenced element and used that  
+along with a code snippet on how to handle observations along the Y coordinate to continuosly trigger a the photo API.
 
-# Your challenge
-- Create a React app that satisfies all the requirements listed above. If you have ideas for nice-to-have features you are encouraged to add them. Surprise us! 
-- You can use any boilerplate and tools that you want to (NextJS, CRA etc) but we advice you to keep it simple. A clean, robust react app is what we're looking for, and we're usually in favor of using all available tools and tricks to get things done.
-- Modern browsers, no weird legacy
-- You can deploy your app on whatever cloud provider you wish (zeit, heroku, gcp etc)
+### Full-width view
 
-# Extra
+I tinkered around with different ways of presenting the meta data of an image until settling  
+on something similar to what's on Unsplash. In order to let the user scroll 'sideways', i.e. picture by  
+picture in the full view I let the parent component (which holds the array of photos),  
+simply hold the currently viewed image's index in their state and pass a function to the image viewer to increment  
+or decrement it.
 
-Before we talk:
-- Do surprise us, we love it
-- Guide us throw what you did; in commits or other way
-- So we like you (probably since you did the challenge): But what stands out, why you?
+### Responsiveness
 
+Thanks to react-responsive-masonry the column count changes based on intervals of window widths.  
+For full-on mobile view I got rid of the masonry completely and opted for a more familiar instagrammy feed.  
+Landscape view works fine but got less attention than portrait. It seems to okay however since most pictures
+from Unsplash  
+are taken in portrait mode.
 
-# Instructions
+### "Surprise us!"
 
-- Fork this repo
-- Build a clean and robust React app
-- Publish the app on your chosen cloud provider
-- Let us know that you've completed the challenge
+To put a spin on what essentially became a clone of the Unsplash.com feed I decided to call EveryPixels  
+stock photo-quality API with every picture and overlay the returned score along with a censoring black box on  
+those which didn't make the cut. Unfortunately the EveryPixel API is limited at 100 requests per 24h so it doesn't  
+take a lot of scrolling to deplete my quota. If the response contains an error (code 429 'Too many requests') a mock api  
+is called instead with a random number above 50 to not clutter the UI with black boxes.
 
+## APIs
 
-# When we talk
+### GET unsplash.com/photos
 
-We expect you talk talk about
------------------------------
+Given paramaters such as page number and an image count returns an array of image data and corresponding user data.
 
-- Description of solution.
-- Reasoning behind your technical choices, including architectural. 
-- Trade-offs you might have made, anything you left out, or what you might do differently if you were to spend additional time on the project.
-- Link to to the hosted application where applicable.
+### GET everypixel.com/v1/quality_ugc
 
-How we review
--------------
+Given an image url parameter it returns a quality score.
 
-Your application will be reviewed by our engineers. We do take into consideration your experience level.
+Description of scoring from everypixel.com:
 
-* **Architecture**: how clean is the separation of controls and data?
-* **Clarity**: does the README clearly and concisely explain the problem and solution? Are technical tradeoffs explained?
-* **Correctness**: does the application do what was asked? If there is anything missing, does the README explain why it is missing?
-* **Code quality**: is the code simple, easy to understand, and maintainable?  Are there any code smells or other red flags? Does object-oriented code follows principles such as the single responsibility principle? Is the coding style consistent with the language's guidelines? Is it consistent throughout the codebase?
-* **Security**: are there any obvious vulnerability?
-* **Testing**: how thorough are the automated tests? Will they be difficult to change if the requirements of the application were to change? Are there some unit and some integration tests?
-	* We're not looking for full coverage (given time constraint) but just trying to get a feel for your testing skills.
-* **UX**: is the web interface understandable and pleasing to use? Is the API intuitive?
-* **Technical choices**: do choices of libraries, databases, architecture etc. seem appropriate for the chosen application?
+> User-Generated Photo Scoring is a model trained on a 347 000 of user photos from Instagram.  
+> Estimation parameters for this model were prepared by a group of 10 professional photographers.  
+> This model is designed to evaluate user photos taken both by a professional camera and by a camera of a smartphone.
 
+## Noteable node packages
 
-
-
-# License
-
-This project is licensed under MIT. Feel free to use it anyway you see fit.
+| Package                  |                  Description                  |
+| ------------------------ | :-------------------------------------------: |
+| react-responsive-masonry | Creates the responsive grid layout for images |
+| everypixel.js            | Javascript queries against the EveryPixel API |
+| react-responsive         |      Media queries for responsive layout      |
+| Material UI Core         |      Loading spinner and modal component      |
+| axios                    |              Makes HTTP requests              |
