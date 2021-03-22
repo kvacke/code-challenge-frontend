@@ -9,8 +9,7 @@ The result is a React app hosted at https://doro-frontend.vercel.app
 
 To create a responsive, infinitely scrolling, lazy loading grid-view of images,  
 fed by the photo api made available by Unsplash.com.  
-An additional requirement was to show full-width view when an image is clicked and then offer additional image details  
-and the ability to keep scrolling.
+An additional requirement was to show full-width view when an image is clicked and then offer additional image details and the ability to keep scrolling.
 
 ## My Solution
 
