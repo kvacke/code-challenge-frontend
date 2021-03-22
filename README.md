@@ -14,6 +14,20 @@ and the ability to keep scrolling.
 
 ## My Solution
 
+### Rough component structure
+
+* App
+  * InfiniteScroll *- Desktop view*
+    * MasonryItem  
+        * StockScoreOverlay and img
+    * ImageView (full width, conditional: on click event)
+      * ImageInfoDialog (meta data, conditional: on click event)
+  * InfiniteScroll *-Mobile view*
+    * ListViewItem
+      * StockScoreOverlay and img
+      * ImageInfoDialog
+  
+
 ### Grid-view and infinite scrolling
 
 In order to spend more time figuring out the _how_ instead of the _what_ I decided early on  
