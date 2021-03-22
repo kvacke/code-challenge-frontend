@@ -62,7 +62,7 @@ Description of scoring from everypixel.com:
 > Estimation parameters for this model were prepared by a group of 10 professional photographers.  
 > This model is designed to evaluate user photos taken both by a professional camera and by a camera of a smartphone.
 
-## Noteable node packages
+## Notable node packages
 
 | Package                  |                  Description                  |
 | ------------------------ | :-------------------------------------------: |
