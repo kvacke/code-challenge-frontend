@@ -20,12 +20,12 @@ In order to spend more time figuring out the _how_ instead of the _what_ I decid
 to try to imitate the neat masonry layout of the Unsplash feed.  
 Once in place thanks to react-responsive-masonry and placeholder photos I read up on how the Intersection  
 Observer API can be used to observe the viewport for any amount of a referenced element and used that  
-along with a code snippet on how to handle observations along the Y coordinate to continuosly trigger a the photo API.
+along with a code snippet on how to handle observations along the Y coordinate to continuosly trigger the photo API.
 
 ### Full-width view
 
-I tinkered around with different ways of presenting the meta data of an image until settling  
-on something similar to what's on Unsplash. In order to let the user scroll 'sideways', i.e. picture by  
+I experimented with different ways of presenting the meta data of an image until settling  
+on something similar to what is on Unsplash. In order to let the user scroll 'sideways', i.e. picture by  
 picture in the full view I let the parent component (which holds the array of photos),  
 simply hold the currently viewed image's index in their state and pass a function to the image viewer to increment  
 or decrement it.
